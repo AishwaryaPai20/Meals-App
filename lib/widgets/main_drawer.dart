@@ -20,8 +20,6 @@ class MainDrawer extends StatelessWidget {
     );
   }
 
-  const MainDrawer({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -50,7 +48,8 @@ class MainDrawer extends StatelessWidget {
             'Meals',
             Icons.restaurant,
             () {
-              Navigator.of(context).pushReplacementNamed('/');   //will also pop the page not only push 
+              Navigator.of(context).pushReplacementNamed(
+                  '/'); //will also pop the page not only push
             },
           ),
           buildListTile(
