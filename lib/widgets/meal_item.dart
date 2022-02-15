@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/meal_detail_screen.dart';
-import '../screens/meal_detail_screen.dart';
+
 import '../models/meal.dart';
+import '../screens/meal_detail_screen.dart';
 
 class MealsItem extends StatelessWidget {
   final String id;
@@ -19,7 +19,8 @@ class MealsItem extends StatelessWidget {
     required this.complexity,
     required this.affordability,
   });
-  String get complexityTest {
+
+  String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
         return 'Simple';
@@ -35,7 +36,7 @@ class MealsItem extends StatelessWidget {
     }
   }
 
-  String get affordabilityTest {
+  String get affordabilityText {
     switch (affordability) {
       case Affordability.Affordable:
         return 'Affordable';
@@ -44,7 +45,7 @@ class MealsItem extends StatelessWidget {
         return 'Pricey';
         break;
       case Affordability.Luxurious:
-        return 'Luxurious';
+        return 'Expensive';
         break;
       default:
         return 'Unknown';
@@ -67,15 +68,15 @@ class MealsItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         elevation: 4,
-        margin: const EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
-                    topRight: const Radius.circular(15),
+                    topRight: Radius.circular(15),
                   ),
                   child: Image.network(
                     imageUrl,
@@ -90,13 +91,12 @@ class MealsItem extends StatelessWidget {
                   child: Container(
                     width: 300,
                     color: Colors.black54,
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 20,
                     ),
                     child: Text(
                       title,
-                      // ignore: prefer_const_constructors
                       style: TextStyle(
                         fontSize: 26,
                         color: Colors.white,
@@ -109,40 +109,34 @@ class MealsItem extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      const Icon(Icons.schedule),
-                      const SizedBox(
-                        width: 6,
-                      ),
+                      Icon(Icons.schedule),
+                      SizedBox(width: 6),
                       Text('$duration min'),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      const Icon(Icons.work),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(complexityTest),
+                      Icon(Icons.work),
+                      SizedBox(width: 6),
+                      Text(complexityText),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      const Icon(Icons.attach_money),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(affordabilityTest),
+                      Icon(Icons.attach_money),
+                      SizedBox(width: 6),
+                      Text(affordabilityText),
                     ],
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),

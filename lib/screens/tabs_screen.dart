@@ -4,7 +4,6 @@ import './favorites_screen.dart';
 import './categories_screen.dart';
 import '../widgets/main_drawer.dart';
 import '../models/meal.dart';
-import '../screens/favorites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   final List<Meal> favoriteMeals;
@@ -27,7 +26,7 @@ class _TabsScreenState extends State<TabsScreen> {
         'title': 'Categories',
       },
       {
-        'page': FavoritesScreen(),
+        'page': FavoritesScreen(widget.favoriteMeals),
         'title': 'Your Favorite',
       },
     ];
